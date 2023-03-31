@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/proses.php";
+$smartphones = getAllSmartphone();
 ?>
 
 <!doctype html>
@@ -8,11 +9,11 @@ require_once __DIR__ . "/proses.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>SmartPhone - Master</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
         .input-group-append {
             cursor: pointer;
@@ -41,13 +42,13 @@ require_once __DIR__ . "/proses.php";
                         </div>
                         <div class="mb-3">
                             <label>Merk Smartphone</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" name="merk_hp">
                                 <option selected disabled>Pilih Merk</option>
-                                <option value="samsung">Samsung</option>
-                                <option value="iphone">iPhone</option>
-                                <option value="oppo">Oppo</option>
-                                <option value="vivo">Vivo</option>
-                                <option value="xiaomi">Xiaomi</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="iPhone">iPhone</option>
+                                <option value="Oppo">Oppo</option>
+                                <option value="Vivo">Vivo</option>
+                                <option value="Xiaomi">Xiaomi</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -94,22 +95,38 @@ require_once __DIR__ . "/proses.php";
                             Smartphone</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center ">
                             <thead>
                                 <tr>
-                                    <th>Kode Smartphone</th>
-                                    <th>Seri Smartphone</th>
-                                    <th>Merk Smartphone</th>
+                                    <th>ID</th>
+                                    <th>Kode SmartPhone</th>
+                                    <th>Seri SmartPhone</th>
+                                    <th>Merk SmartPhone</th>
                                     <th>Ukuran Layar</th>
                                     <th>Kamera Depan</th>
                                     <th>Kamera Belakang</th>
                                     <th>Tanggal Launching</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($smartphones as $smartphone) { ?>
+                                <?php foreach ($smartphones as $smartphone) {
+                                    $no = 1 ?>
                                     <tr>
-                                        //
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $smartphone['kode_hp']; ?></td>
+                                        <td><?= $smartphone['seri_hp']; ?></td>
+                                        <td><?= $smartphone['merk_hp']; ?></td>
+                                        <td><?= $smartphone['ukuran_layar']; ?></td>
+                                        <td><?= $smartphone['kamera_depan']; ?></td>
+                                        <td><?= $smartphone['kamera_belakang']; ?></td>
+                                        <td><?= $smartphone['tanggal_launching']; ?></td>
+                                        <td>
+                                            <a href="index.php/id?=<?= $smartphone['id'] ?>" class="btn btn-primary">Edit</a>
+                                            <form action="index.php" method="post" class="d-inline">
+                                                <button type="submit" name="delete_hp" value="<?= $smartphone['id'] ?>" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -141,6 +158,7 @@ require_once __DIR__ . "/proses.php";
             startDate: '-7d'
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
