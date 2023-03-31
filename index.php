@@ -10,16 +10,14 @@ $smartphones = getAllSmartphone();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SmartPhone - Master</title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
-    .input-group-append {
-        cursor: pointer;
-    }
+        .input-group-append {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -93,8 +91,7 @@ $smartphones = getAllSmartphone();
                 <div class="card">
                     <div class="card-header">
                         <h4>Form Master Smartphone</h4>
-                        <a href="#add" class="btn btn-success float-end" data-bs-toggle="modal"
-                            data-bs-target="#add">Tambah
+                        <a href="#add" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#add">Tambah
                             Smartphone</a>
                     </div>
                     <div class="card-body">
@@ -113,27 +110,25 @@ $smartphones = getAllSmartphone();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 $no = 1;
                                 foreach ($smartphones as $smartphone) { ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $smartphone['kode_hp']; ?></td>
-                                    <td><?= $smartphone['seri_hp']; ?></td>
-                                    <td><?= $smartphone['merk_hp']; ?></td>
-                                    <td><?= $smartphone['ukuran_layar']; ?></td>
-                                    <td><?= $smartphone['kamera_depan']; ?></td>
-                                    <td><?= $smartphone['kamera_belakang']; ?></td>
-                                    <td><?= $smartphone['tanggal_launching']; ?></td>
-                                    <td>
-                                        <a href="index.php/id?=<?= $smartphone['id'] ?>"
-                                            class="btn btn-primary">Edit</a>
-                                        <form action="index.php" method="post" class="d-inline">
-                                            <button type="submit" name="delete_hp" value="<?= $smartphone['id'] ?>"
-                                                class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $smartphone['kode_hp']; ?></td>
+                                        <td><?= $smartphone['seri_hp']; ?></td>
+                                        <td><?= $smartphone['merk_hp']; ?></td>
+                                        <td><?= $smartphone['ukuran_layar']; ?></td>
+                                        <td><?= $smartphone['kamera_depan']; ?></td>
+                                        <td><?= $smartphone['kamera_belakang']; ?></td>
+                                        <td><?= $smartphone['tanggal_launching']; ?></td>
+                                        <td>
+                                            <a href="proses.php/id?=<?= $smartphone['id'] ?>" class="btn btn-primary">Edit</a>
+                                            <form action="proses.php" method="post" class="d-inline">
+                                                <button type="submit" name="delete_hp" value="<?= $smartphone['id'] ?>" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -148,9 +143,9 @@ $smartphones = getAllSmartphone();
     </script>
 
     <script>
-    $(function() {
-        $('#datepicker').datepicker();
-    });
+        $(function() {
+            $('#datepicker').datepicker();
+        });
     </script>
 
 
@@ -159,10 +154,10 @@ $smartphones = getAllSmartphone();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
     </script>
     <script>
-    $('#datepicker').datepicker({
-        format: 'dd-mm-yyyy',
-        startDate: '-7d'
-    });
+        $('#datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: '-7d'
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
